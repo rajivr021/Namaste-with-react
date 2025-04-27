@@ -1,11 +1,12 @@
-
-      
+import React from "react";
+import ReactDOM from "react-dom/client";
     const menu = [
   { name: "Pizza", price: "$10", description: "Delicious cheesy pizza with toppings." },
   { name: "Burger", price: "$5", description: "Juicy burger with lettuce and tomato." },
   { name: "Fries", price: "$3", description: "Crispy golden French fries." },
   { name: "Pasta", price: "$8", description: "Creamy Alfredo pasta." },
-  { name: "Ice Cream", price: "$4", description: "Vanilla ice cream with sprinkles." }
+  { name: "Ice Cream", price: "$4", description: "Vanilla ice cream with sprinkles." },
+  { name: "Samose", price: "$4", description: "Vanilla ice cream with sprinkles." }
 ];
 
 function showPopup(message) {
@@ -46,9 +47,7 @@ function myAlert(item) {
 }
 
 const menuList = menu.map((item, index) =>
-    React.createElement(
-        "div",
-        { id: `${"card-" + index}`, className: "food-card" },
+    React.createElement( "div", { id: `${"card-" + index}`, className: "food-card" },
         [
             React.createElement("h2", { id: item.name }, `${"Name: " + item.name}`),
             React.createElement("p", { id: item.price }, `${"Price: " + item.price}`),
@@ -62,3 +61,4 @@ const main = React.createElement("main", { id: "menu" }, menuList);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(main);
+
