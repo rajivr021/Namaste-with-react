@@ -1,6 +1,6 @@
     body {
         margin: 0;
-    padding: 0;
+        padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
         background-color: #f0f0f0;
@@ -26,7 +26,6 @@
         margin-left: 20px;
         mix-blend-mode: multiply;
         cursor: pointer
-        
     }
 
     .nav-list {
@@ -73,6 +72,8 @@
     .res-card {
         cursor: pointer;
         border-radius: 10px;
+        padding: 10px;
+        width: 200px;
 
     }
 
@@ -98,9 +99,8 @@
 
     .TimeRating {
         display: flex;
-        gap: 8px
-;
-    justify-content: space-between;
+        gap: 8px;
+        justify-content: space-between;
     }
 
     .res-container {
@@ -110,7 +110,97 @@
         justify-content: center;
     }
 
-    .rIcon{
-       width: 20px; 
-       margin-right: 8px
+    .rIcon {
+        width: 20px;
+        margin-right: 8px
     }
+
+    .Ratingbtn {
+        display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 18px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(2, 6, 12, 0.15);
+    padding: 8px 12px;
+    width: auto;
+    box-shadow: rgba(2, 6, 12, 0.04) 0px 2px 12px;
+    transition: background-color 0.1s ease-in, border-color 0.1s ease-in, box-shadow 0.1s ease-in, width 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+
+    .Ratingbtn:active {
+        background: rgb(48, 48, 213);
+        color: wheat;
+        transform: scale(1.08);
+        animation: ease-in-out;
+    }
+
+    .fliter-btn {
+        margin: 10px;
+        display: flex;
+        gap: 3px;
+
+    }
+
+    .vegBtn{
+        background-color: green;
+    }
+
+    .non-vegBtn{
+        background-color: red;
+        
+    }
+
+    .LoadingContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loader{
+        width: 362px;;
+    }
+
+  
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* padding: 10px; */
+        max-width: 500px;
+        /* margin: 30px auto; */
+        border-radius: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+      
+      .search-container input {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        border-radius: 30px 0 0 30px;
+        background-color: #f5f5f5;
+      }
+      
+      .search-container button {
+        padding: 12px 25px;
+        border: none;
+        background-color: #fc8019;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 0 30px 30px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      .search-container button:hover {
+        background-color: #e26b00;
+      }
+      
