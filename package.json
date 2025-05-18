@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "This is namaste react from namaste dev ",
   "scripts": {
-    "start":"parcel index.html",
-    "build":"parcel build index.html",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "just"
   },
   "repository": {
@@ -19,13 +19,29 @@
   "author": "Rajiv",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.14.4"
+    "@parcel/transformer-sass": "^2.14.4",
+    "autoprefixer": "^10.4.21",
+    "parcel": "^2.14.4",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.6"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.3.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.1.0",
+    "@mui/material": "^7.1.0",
+    "framer-motion": "^12.10.5",
+    "gsap": "^3.13.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.22.3",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.18",
+    "swiper": "^11.2.6"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }

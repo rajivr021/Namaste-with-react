@@ -1,24 +1,44 @@
-import { useState } from 'react';
-import { HeaderLogo } from '../utils/contants';
+import { useState } from "react";
+import { HeaderLogo } from "../utils/contants";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
-  const [loginbtn,setloginbtn]=useState("login")
+  const [loginBtn, setLoginBtn] = useState("login");
+  const onlineStatus = useOnlineStatus();
+
+  const handleLoginToggle = () => {
+    setLoginBtn(prev => (prev === "login" ? "logout" : "login"));
+  };
 
   return (
     <header className="header">
       <div className="logo-container">
-        <img className="logo" src={HeaderLogo} alt="Logo" />
+        <img className="logo" src={HeaderLogo} alt="App Logo" />
       </div>
-      <div className="nav-items">
+      <nav className="nav-items">
         <ul className="nav-list">
-          <li className="nav-item">Home</li>
-          <li className="nav-item">About</li>
-          <li className="nav-item">Contact</li>
+          <li className="containerOnlineOfflineDot">
+            <div
+              className={`statusDot ${onlineStatus ? "green" : "red"}`}
+              title={onlineStatus ? "Online" : "Offline"}
+            ></div>
+          </li>
+          <li className="nav-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/contact">Contact</Link>
+          </li>
           <li className="nav-item">Cart</li>
-          <li className="nav-item" onClick={()=>loginbtn==="login"? setloginbtn('logout'): setloginbtn('login')}>{loginbtn}</li>
-          
+          <li className="nav-item" onClick={handleLoginToggle}>
+            {loginBtn}
+          </li>
         </ul>
-      </div>
+      </nav>
     </header>
   );
 };

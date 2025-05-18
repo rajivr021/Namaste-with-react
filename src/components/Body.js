@@ -1,31 +1,13 @@
-import { useState, useEffect } from "react";
+import {useState} from 'react'
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [resList, setResList] = useState([]);
-  const [allRestaurants, setAllRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-
-  useEffect(() => { fetchRestaurants(); }, []);
-
-  const fetchRestaurants = async () => {
-    try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-      );
-      const json = await response.json();
-
-      const restaurants = json?.data?.cards ?.find( (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-
-      const infoList = restaurants.map((r) => r.info);
-
-      setResList(infoList);
-      setAllRestaurants(infoList);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  const { resList, allRestaurants, setResList, loading } = useRestaurantList();
 
   const handleSearch = () => {
     const filtered = allRestaurants.filter((res) =>
@@ -36,10 +18,7 @@ const Body = () => {
 
   const showAll = () => setResList(allRestaurants);
 
-  const showTopRated = () => {
-    const filtered = allRestaurants.filter((res) => res.avgRating > 4.5);
-    setResList(filtered);
-  };
+  const showTopRated = () => { const filtered = allRestaurants.filter((res) => res.avgRating > 4.5); setResList(filtered); };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -48,7 +27,12 @@ const Body = () => {
     if (value.trim() === "") { showAll(); }
   };
 
-  if (allRestaurants.length === 0) { return <Shimmer />; }
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) return <h1>Please check your internet......</h1>;
+
+if (loading) return <Shimmer />;
+
 
   return (
     <div className="Body">
@@ -63,8 +47,12 @@ const Body = () => {
           />
           <button onClick={handleSearch}>Search</button>
         </div>
-        <button className="Ratingbtn Allbtn" onClick={showAll}> All </button>
-        <button className="Ratingbtn" onClick={showTopRated}> Rating 4.5+ </button>
+        <button className="Ratingbtn Allbtn" onClick={showAll}>
+          All
+        </button>
+        <button className="Ratingbtn" onClick={showTopRated}>
+          Rating 4.5+
+        </button>
       </div>
 
       <div className="res-container">
@@ -72,7 +60,9 @@ const Body = () => {
           <h1>No restaurants found for "{searchText.trim()}"</h1>
         ) : (
           resList.map((res) => (
-            <RestaurantCard key={res.id} restaurant={res} />
+            <Link key={res.id} to={"/restaurent/" + res.id}>
+              <RestaurantCard restaurant={res} />
+            </Link>
           ))
         )}
       </div>
