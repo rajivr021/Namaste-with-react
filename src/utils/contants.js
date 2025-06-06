@@ -14,6 +14,6 @@ const MENU_API =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6426028&lng=77.21921669999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
 const MenuRes_API =
-  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6426028&lng=77.21921669999999&restaurantId=";
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
 
 export { RatingIcon, RupeeIcon, HeaderLogo, CDN_URL, MENU_API, MenuRes_API };

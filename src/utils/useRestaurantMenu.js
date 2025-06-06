@@ -14,6 +14,7 @@ const useRestaurantMenu = (resId) => {
         if (isMounted) {
           setResInfo(json);
         }
+        
       } catch (error) {
         console.error("Failed to fetch menu:", error);
       }
@@ -25,7 +26,6 @@ const useRestaurantMenu = (resId) => {
       isMounted = false;
     };
   }, [resId]);
-
   return { resInfo };
 };
 

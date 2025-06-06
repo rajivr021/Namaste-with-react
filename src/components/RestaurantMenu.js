@@ -12,6 +12,15 @@ const RestaurantMenu = () => {
   const info = resInfo?.data?.cards?.[2]?.card?.card?.info;
   const items = resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2] ?.card?.card?.itemCards;
 
+  // console.log(resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR.cards);
+  
+  const categories=resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR.cards.filter((c)=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.MenuVegFilterAndBadge")
+ 
+  console.log(categories);
+  
+
+
+
   if (!info || !items) return <p>Menu not available</p>;
 
   const { name = "Unknown", cuisines = [], costForTwoMessage = "" } = info;

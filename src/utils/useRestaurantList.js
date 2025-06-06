@@ -6,6 +6,7 @@ const useRestaurantList = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // console.log(resList)
   useEffect(() => {
     fetchRestaurants();
   }, []);
