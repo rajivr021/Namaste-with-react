@@ -20,7 +20,7 @@ const useRestaurantList = () => {
       setResList(infoList);
       setAllRestaurants(infoList);
     } catch (error) {
-      console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
