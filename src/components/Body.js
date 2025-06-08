@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
+import UserContext from '../utils/UserContext'
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -35,8 +36,10 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) return <h1>Please check your internet......</h1>;
-
+  
+  const {name,setUserName}=useContext(UserContext)
   if (loading) return <Shimmer />;
+
 
   return (
     <div className="p-6 bg-white min-h-screen h-48 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200 ">
@@ -85,6 +88,7 @@ const Body = () => {
               4.5+
             </span>
           </button>
+          <div><input value={name} onChange={(e)=>setUserName(e.target.value)} className="block w-full pl-10 pr-12 py-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/70 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 text-gray-800 placeholder-gray-500 transition-all duration-200 shadow-sm hover:shadow-md"/></div>
         </div>
       </div>
 

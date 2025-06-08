@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { HeaderLogo } from "../utils/contants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("login");
   const [active,setActive]=useState('home')
   const onlineStatus = useOnlineStatus();
+  const {name}=useContext(UserContext)
 
   const handleLoginToggle = () => {
     setLoginBtn((prev) => (prev === "login" ? "logout" : "login"));
@@ -25,6 +27,8 @@ const Header = () => {
           <li className={`cursor-pointer px-4 py-2 rounded transition-all duration-300 ease-in-out ${active==='contact'?'bg-black text-white':''}`} onClick={()=>setActive('contact')}> <Link to="/contact">Contact</Link> </li>
            <li className={`cursor-pointer px-4 py-2 rounded transition-all duration-300 ease-in-out ${active==='card'?'bg-black text-white':''}`} onClick={()=>setActive('card')}> Cart</li>
           <li className="cursor-pointer px-4 py-2 w-6 mr-5" onClick={handleLoginToggle}> {loginBtn} </li>
+          <li className={`cursor-pointer px-4 py-2 rounded transition-all duration-300 ease-in-out ${active==='card'?'bg-black text-white':''}`}> {name}</li>
+
         </ul>
       </nav>
     </header>
