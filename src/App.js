@@ -8,10 +8,12 @@ import Error from "./components/Error";
 import RestaurnetMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import  UserContext  from "./utils/UserContext";
+import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
 
 const App = () => {
-  const [userName, setUserName] = useState('rajiv');
+  const [userName, setUserName] = useState("rajiv");
   useEffect(() => {
     const data = {
       name: "Rajiv",
@@ -20,12 +22,14 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app h-screen overflow-hidden">
-      <UserContext.Provider value={{name:userName,setUserName}}>
+    <Provider store={appStore}>
+    <UserContext.Provider value={{ name: userName, setUserName }}>
+      <div className="app h-screen overflow-hidden">
         <Header />
         <Outlet />
-      </UserContext.Provider>
-    </div>
+      </div>
+    </UserContext.Provider>
+    </Provider>
   );
 };
 
