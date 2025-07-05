@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [userName, setUserName] = useState("rajiv");
@@ -23,12 +24,12 @@ const App = () => {
 
   return (
     <Provider store={appStore}>
-    <UserContext.Provider value={{ name: userName, setUserName }}>
-      <div className="app h-screen overflow-hidden">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+      <UserContext.Provider value={{ name: userName, setUserName }}>
+        <div className="app h-screen overflow-hidden">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
     </Provider>
   );
 };
@@ -42,6 +43,7 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <ContactUs /> },
       { path: "/restaurent/:resId", element: <RestaurnetMenu /> },
+      { path: "/cart", element: <Cart /> },
     ],
     errorElement: <Error />,
   },

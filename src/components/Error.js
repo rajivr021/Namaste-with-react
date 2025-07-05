@@ -10,24 +10,25 @@ const Error = () => {
   const errorMessages = {
     404: {
       title: "Page Not Found",
-      description: "The page you're looking for doesn't exist or has been moved.",
-      emoji: "🔍"
+      description:
+        "The page you're looking for doesn't exist or has been moved.",
+      emoji: "🔍",
     },
     500: {
       title: "Server Error",
       description: "Something went wrong on our end. Please try again later.",
-      emoji: "🚧"
+      emoji: "🚧",
     },
     401: {
       title: "Unauthorized",
       description: "You don't have permission to access this page.",
-      emoji: "🔒"
+      emoji: "🔒",
     },
     default: {
       title: "Oops! Something went wrong",
       description: "An unexpected error occurred. Please try again.",
-      emoji: "😕"
-    }
+      emoji: "😕",
+    },
   };
 
   const errorData = errorMessages[error.status] || errorMessages.default;
@@ -50,13 +51,15 @@ const Error = () => {
         >
           <span className="error-emoji">{errorData.emoji}</span>
           <h1 className="error-title">{errorData.title}</h1>
-          <p className="error-status">{error.status || "Error"}: {error.statusText || "Unexpected Error"}</p>
+          <p className="error-status">
+            {error.status || "Error"}: {error.statusText || "Unexpected Error"}
+          </p>
         </motion.div>
 
         {/* Error details */}
         <div className="error-content">
           <p className="error-description">{errorData.description}</p>
-          
+
           {error.data && (
             <div className="error-details">
               <p className="error-details-title">Details:</p>
@@ -74,7 +77,7 @@ const Error = () => {
             >
               Refresh Page
             </motion.button>
-            
+
             <Link to="/">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -89,7 +92,10 @@ const Error = () => {
 
         {/* Footer */}
         <div className="error-footer">
-          Need help? <a href="mailto:support@example.com" className="error-link">Contact support</a>
+          Need help?{" "}
+          <a href="mailto:support@example.com" className="error-link">
+            Contact support
+          </a>
         </div>
       </div>
     </motion.div>
